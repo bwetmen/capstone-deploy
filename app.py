@@ -2,6 +2,8 @@ from fastapi import FastAPI, UploadFile, HTTPException
 from fastapi.responses import JSONResponse
 import numpy as np
 import os
+import shutil
+import zipfile
 from sklearn.metrics import classification_report, confusion_matrix
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -10,16 +12,20 @@ from tensorflow.keras.preprocessing.image import ImageDataGenerator
 
 app = FastAPI()
 
+@app.get("/favicon.ico")
+async def favicon():
+    return FileResponse(os.path.join('static', 'favicon.ico'))
+    
 # Konfigurasi model dan path
 MODEL_PATH = "model"
 MODEL_FILE = os.path.join(MODEL_PATH, "model.h5")
 CONFUSION_MATRIX_FILE = os.path.join(MODEL_PATH, "confusion_matrix.png")
 
-# Load model
-if not os.path.exists(MODEL_FILE):
-    raise FileNotFoundError(f"Model file not found at {MODEL_FILE}")
-
-model = load_model(MODEL_FILE)
+# Load model dengan compile=False untuk mencegah kesalahan kompilasi
+try:
+    model = load_model(MODEL_FILE, compile=False)  # Menambahkan compile=False
+except Exception as e:
+    raise HTTPException(status_code=500, detail=f"Error loading model: {e}")
 
 @app.post("/predict")
 async def predict(file: UploadFile):
@@ -29,21 +35,21 @@ async def predict(file: UploadFile):
         raise HTTPException(status_code=400, detail="Input file must be a .zip archive containing images.")
 
     # Proses file input (contoh: Anda perlu mengekstrak file di sini dan mempersiapkan data)
-    # Misalnya, simpan dan proses data di direktori sementara:
     TEMP_DIR = "temp_test_data"
     if os.path.exists(TEMP_DIR):
-        import shutil
-        shutil.rmtree(TEMP_DIR)
+        shutil.rmtree(TEMP_DIR)  # Hapus folder sementara jika sudah ada
     os.makedirs(TEMP_DIR, exist_ok=True)
 
     file_location = os.path.join(TEMP_DIR, file.filename)
     with open(file_location, "wb") as f:
         f.write(await file.read())
 
-    # Ekstraksi file (jika format zip)
-    import zipfile
-    with zipfile.ZipFile(file_location, 'r') as zip_ref:
-        zip_ref.extractall(TEMP_DIR)
+    # Ekstraksi file zip
+    try:
+        with zipfile.ZipFile(file_location, 'r') as zip_ref:
+            zip_ref.extractall(TEMP_DIR)
+    except zipfile.BadZipFile:
+        raise HTTPException(status_code=400, detail="Invalid zip file format.")
 
     # Konfigurasi ImageDataGenerator
     test_datagen = ImageDataGenerator(rescale=1.0/255.0)
@@ -95,6 +101,9 @@ async def predict(file: UploadFile):
         class_metrics[class_name] = {
             "accuracy": round(class_accuracy, 4)
         }
+
+    # Hapus folder sementara setelah proses selesai
+    shutil.rmtree(TEMP_DIR)
 
     # Buat respons JSON
     response = {
