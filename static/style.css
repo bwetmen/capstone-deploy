@@ -1,0 +1,435 @@
+
+body::before{
+    display: block;
+    content: '';
+    height: 45px;
+}
+
+.boxes {
+padding: 80px 0;
+margin: 0;
+}
+
+.boxes .container {
+max-width: 1200px;
+margin: 0 auto;
+}
+
+.boxes .row {
+display: flex;
+justify-content: center;
+align-items: stretch;
+margin: 0 -30px;
+}
+
+.boxes .box {
+flex: 0 0 33.333333%;
+max-width: 33.333333%;
+padding: 0 30px;
+}
+
+.boxes .box-content {
+background-color: #343a40;
+color: #fff;
+border-radius: 10px;
+border: none;
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+height: 100%;
+padding: 40px;
+transition: transform 0.3s ease;
+}
+
+.boxes .box-content:hover {
+transform: translateY(-5px);
+}
+
+.boxes .image-container {
+margin-bottom: 30px;
+}
+
+.boxes .box-title {
+font-size: 22px;
+font-weight: bold;
+margin-bottom: 15px;
+}
+
+.boxes .box-text {
+font-size: 16px;
+line-height: 1.6;
+}
+
+.grid-container {
+    display: grid;
+    gap: 20px; 
+}
+
+.grid-container .row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 20px; 
+}
+
+.grid-container .col-md-6 {
+    flex: 0 0 calc(50% - 20px); 
+    max-width: calc(50% - 20px);
+}
+
+.grid-container .col-12 {
+    flex: 0 0 calc(100% - 20px); 
+    max-width: calc(100% - 20px); 
+}
+
+.grid-container .Pasfoto {
+    display: block;
+    margin: 0 auto;
+}
+
+
+.logouns {
+    max-width: 600px; 
+    max-height: 300px; 
+}
+
+.jumbotronglosarium {
+    margin-top: 20px;
+    position: relative;
+    width: 1300px;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    overflow: hidden;
+    text-align: center;
+    color: white;
+}
+
+.jumbotronglosarium .jumbotron-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.jumbotronglosarium h1 {
+    font-weight: 600;
+    z-index: 1;
+}
+
+.jumbotronglosarium hr {
+    z-index: 1;
+}
+
+
+.kolominformasi {
+    text-align: center;
+    max-width: 1000px;
+    font-size: 20px;
+    font-weight: 100;
+    font-family: 'comic sans ms';
+    color: #364f6b;
+    margin: 0 auto; 
+}
+
+.kolominformasi h3 {
+    margin-top: 20px; 
+}
+
+.kolominformasi p {
+    text-align: left; 
+    text-indent: 60px; 
+}
+
+#dateButton{
+    display: block; 
+    margin: auto; 
+    font-size: 24px; 
+    border: none;
+}
+
+#date{
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+#byeButton{
+    display: block; 
+    margin: auto;
+    margin-bottom: 15px; 
+    font-size: 24px; 
+    border: none;
+}
+
+.card {
+    width: 200px; 
+    height: auto; 
+    border: 1px solid #ccc; 
+    border-radius: 8px; 
+    margin: 10px; 
+    padding: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card img {
+    width: 100%; 
+    height: auto; 
+    border-radius: 8px; 
+}
+
+.card-title {
+    font-size: 18px; 
+    margin-bottom: 5px; 
+}
+
+.card-text {
+    font-size: 14px; 
+    color: #666; 
+}
+
+#add-foto-uns label {
+    display: inline-block;
+    justify-content: center;
+    width: 80px;
+    margin-bottom: 5px;
+    color: #333;
+    font-weight: bold;
+}
+
+#add-foto-uns input,
+#add-foto-uns textarea {
+    width: 95%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+#add-foto-uns button {
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+#add-foto-uns button:hover {
+    background-color: #2980b9;
+}
+
+/* General Section Styling */
+.upload-section {
+    padding: 50px 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+    font-family: 'Arial', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700; /* Heavier font */
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.section-description {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+/* Form Styling */
+.upload-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.custom-file-label {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #444;
+}
+
+.custom-file-input {
+    padding: 12px;
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: #333;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    outline: none;
+    cursor: pointer;
+    background-color: #fff;
+}
+
+.custom-file-input:hover {
+    border-color: #4caf50;
+}
+
+.analyze-button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 14px 25px;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    font-weight: 700; /* Heavier font */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.analyze-button:hover {
+    background-color: #45a049;
+}
+
+/* Loading Indicator */
+.loading-indicator {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 6px solid #ccc;
+    border-top: 6px solid #4caf50;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 10px;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Result Section */
+.result-section {
+    margin-top: 30px;
+    padding: 20px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.result-section h3 {
+    font-size: 1.7rem;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.result-section p {
+    font-size: 1.2rem;
+    color: #555;
+}
+
+.jumbotrontreatment {
+    margin-top: 20px;
+    position: relative;
+    width: 1300px;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.video-jumbotron {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the video covers the entire area */
+    z-index: 0;
+}
+
+.jumbotrontreatment .container {
+    position: relative;
+    z-index: 1; /* Brings text above the video */
+    color: white;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.5); /* Slightly darkens the text background for better readability */
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.jumbotrontreatment h1 {
+    font-weight: 600;
+    font-size: 2.5rem;
+}
+
+.jumbotrontreatment hr {
+    width: 60%;
+    border: 2px solid white;
+    margin: 10px auto;
+}
+
+.kolominformasi {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 40px;
+}
+
+.kolominformasi h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.accordion-button {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    color: #333;
+    text-align: left;
+    width: 100%;
+    font-weight: bold;
+    padding: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.accordion-button:hover {
+    background-color: #e9e9e9;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #e9e9e9;
+}
+
+.accordion-collapse {
+    border-top: 1px solid #ddd;
+}
+
+/* Adjusting the appearance of the accordion */
+.accordion-body {
+    padding: 15px;
+    background-color: #f9f9f9;
+    text-align: left; /* Align content to the left */
+}
+
+.accordion-body ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.accordion-body li {
+    padding: 5px 0;
+    font-size: 1rem;
+    padding-left: 20px; /* Indent each level of list items */
+}
+

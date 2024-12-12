@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <title>Skin Sense</title>
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="icon" href="images/skindetectlogo.png" type="image/png">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <!--Header dan Navbar-->
+    <header>
+        <nav id="Home" class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <img src="images/skindetectlogo.png" alt="GM_logo" width="65" height="60">
+                </a>
+                <a href="#" class="navbar-brand">Skin Sense</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-end" id="navmenu">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#upload-section" class="nav-link">Scan Disease</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#glosarium" class="nav-link">Glosarium</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#treatment" class="nav-link">Treatment</a>
+                        </li>
+                        <!--Search Bar-->
+                        <li class="nav-item">
+                            <form class="d-flex" id="searchForm">
+                                <div class="input-group">
+                                    <input id="searchInput" class="form-control" type="search" placeholder="Search" aria-label="Search">
+                                    <button class="btn btn-outline-success" type="submit">Search</button>
+                                </div>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Showcase-->
+    <section class="bg-dark text-light pt-3 text-center text-sm-start">
+            <div class="container">
+                <div class="d-sm-flex align-items-center justify-content-between">
+                    <div>
+                        <h2><span class="text-warning">Skin Sense</span></h2>
+                        <p>Skin Sense is an advanced platform powered by machine learning technology, designed to address serious skin health concerns. It offers precise disease detection through image analysis, enabling early identification of potentially severe conditions. In addition, the platform provides an extensive database of skin diseases with detailed information on causes, symptoms, and risks, as well as tailored treatment guidance to support recovery and effective management. With its focus on critical skin health, Skin Detect empowers users to take informed actions for better outcomes.
+                        </p>
+                    </div>
+                    <img class="img-fluid w-25 d-none d-sm-block" src="images/headimg.png" alt="programmer">
+                </div>
+            </div>
+    </section> 
+
+    <!--Skipline text-->
+    <section class="bg-primary text-light p-3">
+        <div class="container">
+            <div class="d-md-flex align-items-center justify-content-center">
+                <h3 class="mb-3 mb-md-0">Feature</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- Box Model -->
+    <section class="boxes">
+        <div class="container">
+        <div class="row">
+            <div class="box">
+            <div class="box-content">
+                <div class="image-container">
+                <img src="images/1.png" alt="Web Development Image" class="img-fluid">
+                </div>
+                <h3 class="box-title">Skin Disease Detection</h3>
+                <p class="box-text">
+                Upload an image of your skin condition, and our advanced machine learning model will analyze it to detect potential skin diseases with detailed results.
+                </p>
+            </div>
+            </div>
+            <div class="box">
+            <div class="box-content">
+                <div class="image-container">
+                <img src="images/2.png" alt="Cyber Security Image" class="img-fluid">
+                </div>
+                <h3 class="box-title">Skin Disease Glossary</h3>
+                <p class="box-text">
+                Explore a comprehensive database of skin diseases, complete with descriptions, symptoms, and related information to help you understand various conditions.
+                </p>
+            </div>
+            </div>
+            <div class="box">
+            <div class="box-content">
+                <div class="image-container">
+                <img src="images/4.png" alt="Data Science Image" class="img-fluid">
+                </div>
+                <h3 class="box-title">Treatment Guidance</h3>
+                <p class="box-text">
+                Learn about the best treatment options for different skin conditions, including medications, therapies, and lifestyle tips, to support recovery and maintain skin health.
+                </p>
+            </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- Scan -->
+    <section id="upload-section" class="upload-section">
+        <div class="container text-center">
+            <h2 class="section-title">Scan Your Skin Health</h2>
+            <p class="section-description">Upload an image of your skin to get instant analysis and recommendations.</p>
+            <form id="upload-form" class="upload-form">
+                <label for="skin-image" class="custom-file-label">Choose Image:</label>
+                <input type="file" id="skin-image" accept="image/*" class="custom-file-input" required>
+                <button type="submit" class="analyze-button">Analyze</button>
+            </form>
+            <div id="loading-indicator" class="loading-indicator" style="display: none;">
+                <div class="spinner"></div>
+                <p>Analyzing... Please wait.</p>
+            </div>
+            <div id="result" class="result-section" style="display: none;">
+                <h3>Analysis Result:</h3>
+                <p id="result-text">No analysis yet.</p>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Glosarium -->
+<article class="container">
+    <div class="glosarium">
+        <section id="glosarium">
+            <div class="jumbotronglosarium">
+                <video autoplay muted loop class="jumbotron-video">
+                    <source src="images/video1.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="container d-flex flex-column justify-content-end align-items-center h-100">
+                    <h1 class="display-4">Skin Disease Glossary</h1>
+                    <hr class="my-3">
+                </div>
+            </div>
+            <div class="content">
+                <br>
+                <div class="kolominformasi">
+                    <h2>Acne</h2>
+                    <p>Acne is a skin condition that occurs when hair follicles or pores become clogged with oil (sebum), dead skin cells, and bacteria. This skin condition commonly appears in areas of the body that have more oil glands, such as the face, neck, chest, back, and shoulders.</p>
+
+                    <!-- Accordion for Causes -->
+                    <div class="accordion" id="acneAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                    Causes
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#acneAccordion">
+                                <div class="accordion-body">
+                                    <ul>
+                                        <li>Excessive oil production: The sebaceous glands produce excess oil, which can clog pores.</li>
+                                        <li>Build-up of dead skin cells: Dead skin cells that are not properly shed can clog hair follicles.</li>
+                                        <li>Bacteria: Propionibacterium acnes (or Cutibacterium acnes) can multiply in clogged pores, causing inflammation.</li>
+                                        <li>Hormonal changes: Androgen hormones, especially during puberty, can trigger excess oil production.</li>
+                                        <li>Genetic factors: A family history of acne can increase the risk.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                        <!-- Accordion for Jenis-jenis -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Jenis-jenis
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#acneAccordion">
+                                <div class="accordion-body">
+                                    <ul>
+                                        <li>Komedo tertutup (whiteheads): Pori-pori tersumbat yang tertutup oleh kulit, tampak sebagai benjolan kecil berwarna putih.</li>
+                                        <li>Komedo terbuka (blackheads): Pori-pori tersumbat yang terbuka, sehingga minyak teroksidasi dan tampak hitam.</li>
+                                        <li>Papula: Benjolan merah kecil tanpa nanah, yang terasa sakit jika disentuh.</li>
+                                        <li>Pustula: Benjolan merah dengan puncak berisi nanah.</li>
+                                        <li>Nodul: Benjolan besar, keras, dan menyakitkan yang terbentuk di bawah kulit.</li>
+                                        <li>Kista: Lesi besar, berisi nanah, dan sangat menyakitkan, sering meninggalkan bekas luka.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Accordion for Faktor yang mempengaruhi -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    Faktor yang mempengaruhi
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#acneAccordion">
+                                <div class="accordion-body">
+                                    <ul>
+                                        <li>Stres</li>
+                                        <li>Diet (makanan tinggi gula atau produk susu dapat memicu jerawat pada beberapa orang)</li>
+                                        <li>Produk perawatan kulit yang tidak cocok</li>
+                                        <li>Polusi udara dan kelembapan</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Accordion for Tanda-tanda dan gejala -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingFour">
+                                <button class="accordion-button collapsed collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                    Tanda-tanda dan gejala
+                                </button>
+                            </h2>
+                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#acneAccordion">
+                                <div class="accordion-body">
+                                    <ul>
+                                        <li>Pori-pori tersumbat:</li>
+                                        <ul>
+                                            <li>Whiteheads (komedo tertutup): Benjolan kecil berwarna putih di bawah permukaan kulit, terjadi karena pori tersumbat oleh minyak dan sel kulit mati.</li>
+                                            <li>Blackheads (komedo terbuka): Pori-pori yang tersumbat terbuka, menyebabkan minyak teroksidasi dan tampak hitam.</li>
+                                        </ul>
+                                        <li>Benjolan merah:</li>
+                                        <ul>
+                                            <li>Papula: Benjolan kecil, keras, dan merah yang tidak berisi nanah. Biasanya terasa nyeri saat disentuh.</li>
+                                            <li>Pustula: Benjolan merah yang berisi nanah di puncaknya (sering disebut "jerawat matang").</li>
+                                        </ul>
+                                        <li>Jerawat dalam (lebih parah):</li>
+                                        <ul>
+                                            <li>Nodul: Benjolan besar, keras, dan terasa sakit yang terbentuk jauh di bawah kulit.</li>
+                                            <li>Kista: Lesi besar berisi nanah yang sangat menyakitkan, sering meninggalkan bekas luka.</li>
+                                        </ul>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Accordion for Gejala lain -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingFive">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                    Gejala lain
+                                </button>
+                            </h2>
+                            <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#acneAccordion">
+                                <div class="accordion-body">
+                                    <ul>
+                                        <li>Kulit berminyak: Produksi minyak berlebih di area wajah, dada, punggung, atau bahu.</li>
+                                        <li>Kemerahan dan peradangan: Area kulit yang terkena jerawat tampak memerah dan bengkak.</li>
+                                        <li>Sensasi nyeri atau tidak nyaman: Jerawat yang meradang atau besar sering menimbulkan rasa nyeri.</li>
+                                        <li>Bekas luka atau hiperpigmentasi: Setelah jerawat sembuh, bekas noda gelap atau cekungan pada kulit dapat tertinggal, terutama jika jerawat dipencet.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- End of Acne accordion -->
+
+                    <!-- Accordion for BCC -->
+                    <h2>Basal Cell Carcinoma (BCC)</h2>
+                    <p>Basal Cell Carcinoma (BCC) is the most common type of skin cancer and develops in the deepest layer of the epidermis, which is the basal cells. The basal cells are responsible for producing new skin cells. BCC usually grows slowly and rarely metastasizes (spreads) to other parts of the body, but if untreated, it can cause damage to surrounding tissues. The primary cause of BCC is exposure to ultraviolet (UV) rays from the sun or artificial sources like tanning beds, which damage the DNA in skin cells.</p>
+                    
+                    <!-- Accordion for BCC Penyebab -->
+                    <div class="accordion" id="bccAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingBCC">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBCC" aria-expanded="false" aria-controls="collapseBCC">
+                                    cause of disease
+                                </button>
+                            </h2>
+                            <div id="collapseBCC" class="accordion-collapse collapse show" aria-labelledby="headingBCC" data-bs-parent="#bccAccordion">
+                                <div class="accordion-body">
+                                    <ul>
+                                        <li>Long-term sun exposure.</li>
+                                        <li>Fair skin, light eyes, or red/blonde hair.</li>
+                                        <li>Family history of skin cancer.</li>
+                                        <li>Older age, as UV skin damage is cumulative.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- End of BCC Penyebab accordion -->
+
+                    <!-- Accordion for BCC Ciri-ciri -->
+                    <div class="accordion" id="bccCharacteristicsAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingBCCCharacteristics">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBCCCharacteristics" aria-expanded="false" aria-controls="collapseBCCCharacteristics">
+                                    Characteristics of the disease
+                                </button>
+                            </h2>
+                            <div id="collapseBCCCharacteristics" class="accordion-collapse collapse show" aria-labelledby="headingBCCCharacteristics" data-bs-parent="#bccCharacteristicsAccordion">
+                                <div class="accordion-body">
+                                    <ul>
+                                        <li>Small, translucent, or shiny bump on the skin, often seen on the face, neck, or ears.</li>
+                                        <li>Flat skin lesion that is red or brownish with slightly raised edges.</li>
+                                        <li>Persistent open sore that does not heal or often bleeds and crusts over.</li>
+                                        <li>Pearl-like area with small blood vessels visible around it.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- End of BCC Ciri-ciri accordion -->
+
+                    <!-- Accordion for BCC Faktor risiko -->
+                    <div class="accordion" id="bccRiskFactorsAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingBCCRiskFactors">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBCCRiskFactors" aria-expanded="false" aria-controls="collapseBCCRiskFactors">
+                                    Risk factors
+                                </button>
+                            </h2>
+                            <div id="collapseBCCRiskFactors" class="accordion-collapse collapse show" aria-labelledby="headingBCCRiskFactors" data-bs-parent="#bccRiskFactorsAccordion">
+                                <div class="accordion-body">
+                                    <ul>
+                                        <li>Long-term sun exposure.</li>
+                                        <li>Fair skin, light eyes, or red/blonde hair.</li>
+                                        <li>Family history of skin cancer.</li>
+                                        <li>Older age, as UV skin damage is cumulative.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- End of BCC Faktor risiko accordion -->
+
+                    <!-- Accordion for BCC Tanda-tanda dan gejala -->
+                    <div class="accordion" id="bccSymptomsAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingBCCSymptoms">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBCCSymptoms" aria-expanded="false" aria-controls="collapseBCCSymptoms">
+                                    Signs and symptoms
+                                </button>
+                            </h2>
+                            <div id="collapseBCCSymptoms" class="accordion-collapse collapse show" aria-labelledby="headingBCCSymptoms" data-bs-parent="#bccSymptomsAccordion">
+                                <div class="accordion-body">
+                                    <ul>
+                                        <li>Small, translucent, or shiny bump on the skin, often seen on the face, neck, or ears.</li>
+                                        <li>Persistent open sore that does not heal or often bleeds and crusts over.</li>
+                                        <li>Elevated or wavy edges of affected area.</li>
+                                        <li>Lesion that bleeds or oozes fluid.</li>
+                                        <li>Flat patches or lesions that appear red or brownish, often painless.</li>
+                                        <li>Pearl-like formation around the lesion.</li>
+                                        <li>Commonly appears on sun-exposed areas such as face, nose, forehead, ears, neck, and back of hands.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- End of BCC Tanda-tanda dan gejala accordion -->
+
+                    <h2>Eczema</h2>
+                    <p>Eczema, or dermatitis, is a chronic inflammatory condition of the skin that causes it to become red, dry, itchy, and sometimes cracked. The disease is not contagious and often occurs in children, but it can persist into adulthood or appear for the first time in adults. Eczema has various types, with atopic dermatitis being the most common.</p>
+                    
+                    <!-- Accordion for Eczema Causes -->
+                    <div class="accordion" id="eczemaAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingEczema">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEczema" aria-expanded="false" aria-controls="collapseEczema">
+                                    Causes
+                                </button>
+                            </h2>
+                            <div id="collapseEczema" class="accordion-collapse collapse show" aria-labelledby="headingEczema" data-bs-parent="#eczemaAccordion">
+                                <div class="accordion-body">
+                                    <ul>
+                                        <li>Genetic factors, with a family history of eczema, asthma, or allergies.</li>
+                                        <li>Environmental factors, such as exposure to allergens (dust, pollen, animal dander).</li>
+                                        <li>Contact with irritants, like soaps, detergents, perfumes, or certain chemicals.</li>
+                                        <li>Weather conditions, particularly cold or dry climates.</li>
+                                        <li>Stress, which can aggravate symptoms.</li>
+                                        <li>Skin infections, including bacterial, viral, or fungal infections.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- End of Eczema Causes accordion -->
+    
+                    <!-- Accordion for Eczema Characteristics -->
+                    <div class="accordion" id="eczemaCharacteristicsAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingEczemaCharacteristics">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEczemaCharacteristics" aria-expanded="false" aria-controls="collapseEczemaCharacteristics">
+                                    Characteristics
+                                </button>
+                            </h2>
+                            <div id="collapseEczemaCharacteristics" class="accordion-collapse collapse show" aria-labelledby="headingEczemaCharacteristics" data-bs-parent="#eczemaCharacteristicsAccordion">
+                                <div class="accordion-body">
+                                    <ul>
+                                        <li>Intense itching, especially at night.</li>
+                                        <li>Dry skin that feels rough or scaly.</li>
+                                        <li>Red rash, often found on the hands, feet, face, or skin folds like elbows and knees.</li>
+                                        <li>Blisters that can burst and leak fluid, then crust over.</li>
+                                        <li>Thickening of the skin if scratched frequently (lichenification).</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- End of Eczema Characteristics accordion -->
+    
+                    <!-- Accordion for Eczema Risk Factors -->
+                    <div class="accordion" id="eczemaRiskFactorsAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingEczemaRiskFactors">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEczemaRiskFactors" aria-expanded="false" aria-controls="collapseEczemaRiskFactors">
+                                    Risk Factors
+                                </button>
+                            </h2>
+                            <div id="collapseEczemaRiskFactors" class="accordion-collapse collapse show" aria-labelledby="headingEczemaRiskFactors" data-bs-parent="#eczemaRiskFactorsAccordion">
+                                <div class="accordion-body">
+                                    <ul>
+                                        <li>Long-term sun exposure.</li>
+                                        <li>Fair skin, light eyes, or red/blonde hair.</li>
+                                        <li>Family history of skin cancer.</li>
+                                        <li>Older age, as UV skin damage is cumulative.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- End of Eczema Risk Factors accordion -->
+    
+                    <!-- Accordion for Eczema Symptoms -->
+                    <div class="accordion" id="eczemaSymptomsAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingEczemaSymptoms">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEczemaSymptoms" aria-expanded="false" aria-controls="collapseEczemaSymptoms">
+                                    Symptoms
+                                </button>
+                            </h2>
+                            <div id="collapseEczemaSymptoms" class="accordion-collapse collapse show" aria-labelledby="headingEczemaSymptoms" data-bs-parent="#eczemaSymptomsAccordion">
+                                <div class="accordion-body">
+                                    <ul>
+                                        <li>Intense itching, especially at night.</li>
+                                        <li>Dry skin that feels rough or scaly.</li>
+                                        <li>Red rash, often seen on the hands, feet, face, or skin folds like elbows and knees.</li>
+                                        <li>Blisters that can burst and leak fluid, then crust over.</li>
+                                        <li>Thickening of the skin if scratched frequently (lichenification).</li>
+                                        <li>Changes in skin color, ranging from redness to darkening, especially after healing phases or due to repeated inflammation.</li>
+                                        <li>Small, separate or merged patches, commonly found in skin folds like elbows, knees, or around the eyes.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- End of Eczema Symptoms accordion -->
+                    
+                    <h2>Keratosis</h2>
+                    <p>Keratosis is a medical term referring to a skin condition characterized by the growth or formation of hard lumps or patches on the surface of the skin. The disease can take various forms, with the most common being seborrheic keratosis and actinic keratosis.</p>
+                    
+                    <!-- Accordion for Seborrheic Keratosis -->
+                    <div class="accordion" id="seborrheicKeratosisAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingSeborrheicKeratosis">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeborrheicKeratosis" aria-expanded="false" aria-controls="collapseSeborrheicKeratosis">
+                                    Seborrheic Keratosis
+                                </button>
+                            </h2>
+                            <div id="collapseSeborrheicKeratosis" class="accordion-collapse collapse show" aria-labelledby="headingSeborrheicKeratosis" data-bs-parent="#seborrheicKeratosisAccordion">
+                                <div class="accordion-body">
+                                    <ul>
+                                        <li>It is the most common type, usually found in adults, especially with age. Seborrheic keratosis appears as round, brown to black growths that may feel rough or crusty. These growths are usually harmless, although they can resemble warts or skin tumors.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- End of Seborrheic Keratosis accordion -->
+    
+                    <!-- Accordion for Actinic Keratosis -->
+                    <div class="accordion" id="actinicKeratosisAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingActinicKeratosis">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseActinicKeratosis" aria-expanded="false" aria-controls="collapseActinicKeratosis">
+                                    Actinic Keratosis
+                                </button>
+                            </h2>
+                            <div id="collapseActinicKeratosis" class="accordion-collapse collapse show" aria-labelledby="headingActinicKeratosis" data-bs-parent="#actinicKeratosisAccordion">
+                                <div class="accordion-body">
+                                    <ul>
+                                        <li>Actinic keratosis occurs due to skin damage caused by prolonged sun exposure. This condition often appears as rough or scaly patches, usually red or brown in color, and more commonly found on sun-exposed areas like the face, ears, neck, and hands. Actinic keratosis can potentially develop into skin cancer, specifically squamous cell carcinoma, if untreated.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- End of Actinic Keratosis accordion -->
+    
+                    <!-- Accordion for Keratosis Causes -->
+                    <div class="accordion" id="keratosisCausesAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingKeratosisCauses">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseKeratosisCauses" aria-expanded="false" aria-controls="collapseKeratosisCauses">
+                                    Causes
+                                </button>
+                            </h2>
+                            <div id="collapseKeratosisCauses" class="accordion-collapse collapse show" aria-labelledby="headingKeratosisCauses" data-bs-parent="#keratosisCausesAccordion">
+                                <div class="accordion-body">
+                                    <ul>
+                                        <li>Sun Exposure  
+                                            <ul>
+                                                <li>Actinic Keratosis: Prolonged exposure to ultraviolet (UV) rays from the sun is the main cause of actinic keratosis (solar keratosis). Excessive UV exposure damages the skin and affects skin cells, leading to the formation of rough, scaly patches. Individuals who frequently spend time in the sun or have fair skin are at higher risk for actinic keratosis.</li>
+                                                <li>Seborrheic Keratosis: Although sunlight exposure can also influence the formation of seborrheic keratosis, the main cause for this type is more related to genetic factors and aging.</li>
+                                            </ul>
+                                        </li>
+                                        <li>Genetic Factors  
+                                            <ul>
+                                                <li>Seborrheic Keratosis: Seborrheic keratosis is heavily influenced by genetic factors. A family history of seborrheic keratosis increases the likelihood of developing it. This condition is common in older adults and usually develops with age.</li>
+                                            </ul>
+                                        </li>
+                                        <li>Age  
+                                            <ul>
+                                                <li>Seborrheic Keratosis: Aging is a major factor in the development of seborrheic keratosis. As skin ages, it undergoes changes that increase the likelihood of developing hard lumps or patches of seborrheic keratosis.</li>
+                                            </ul>
+                                        </li>
+                                        <li>Weak Immune System  
+                                            <ul>
+                                                <li>Individuals with a weakened immune system, such as those undergoing certain treatments or with specific diseases like HIV/AIDS, are more susceptible to developing both seborrheic keratosis and actinic keratosis.</li>
+                                            </ul>
+                                        </li>
+                                        <li>Environmental Factors  
+                                            <ul>
+                                                <li>Exposure to pollutants or chemical irritants can increase the risk of keratosis, particularly in individuals who are frequently exposed to chemicals or irritants in their work or daily life.</li>
+                                            </ul>
+                                        </li>
+                                        <li>History of Carcinogen Exposure  
+                                            <ul>
+                                                <li>Actinic Keratosis: Exposure to carcinogens (cancer-causing agents) can also increase the risk of actinic keratosis. For example, exposure to arsenic, sometimes found in certain work environments or contaminated areas, can lead to the development of actinic keratosis.</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- End of Keratosis Causes accordion -->
+    
+                    <!-- Accordion for Keratosis Symptoms -->
+                    <div class="accordion" id="keratosisSymptomsAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingKeratosisSymptoms">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseKeratosisSymptoms" aria-expanded="false" aria-controls="collapseKeratosisSymptoms">
+                                    Symptoms
+                                </button>
+                            </h2>
+                            <div id="collapseKeratosisSymptoms" class="accordion-collapse collapse show" aria-labelledby="headingKeratosisSymptoms" data-bs-parent="#keratosisSymptomsAccordion">
+                                <div class="accordion-body">
+                                    <ul>
+                                        <li>Skin Growth or Patch  
+                                            <ul>
+                                                <li>Seborrheic Keratosis appears as hard, round, or oval lumps that can be brown, black, or yellow in color. These lumps often have a rough, crusty, or oily surface.</li>
+                                                <li>Actinic Keratosis usually presents as rough, scaly, and dry patches that are red, pink, or brown in color. These patches often feel more textured when touched.</li>
+                                            </ul>
+                                        </li>
+                                        <li>Itching or Discomfort  
+                                            <ul>
+                                                <li>Lumps or patches caused by seborrheic keratosis can sometimes be itchy or irritating, although they do not always cause pain.</li>
+                                                <li>For actinic keratosis, the affected area may feel more sensitive or itchy, especially when exposed to sunlight.</li>
+                                            </ul>
+                                        </li>
+                                        <li>Change in Size or Color  
+                                            <ul>
+                                                <li>Seborrheic Keratosis can change in size over time and may become larger. The color of the lumps can vary from darker to lighter shades.</li>
+                                                <li>For actinic keratosis, patches may become rougher, larger, or redder. Some patches can become more raised and may be painful if scratched or exposed to sunlight.</li>
+                                            </ul>
+                                        </li>
+                                        <li>Sweating or Crusting  
+                                            <ul>
+                                                <li>On seborrheic keratosis, the lump's surface can appear oily or crusty. Sometimes, the crust can peel off or flake away from the skin.</li>
+                                                <li>For actinic keratosis, the infected skin may be scaly or flake off, creating a thin layer on top of the patch.</li>
+                                            </ul>
+                                        </li>
+                                        <li>Bleeding or Non-healing Lesions  
+                                            <ul>
+                                                <li>If the keratosis is scratched or injured, the lump or patch may bleed or become infected, particularly in actinic keratosis. If left untreated, actinic keratosis can develop into skin cancer.</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- End of Keratosis Symptoms accordion -->
+                    
+                    <!-- Melanoma Accordion Section -->
+                    <h2>Melanoma</h2>
+                    <p>Melanoma is a type of skin cancer that develops from melanocytes, the skin cells that produce melanin, the pigment responsible for giving skin its color. Melanoma can develop in normal-looking skin or can appear on an existing mole. It is known as one of the most dangerous forms of skin cancer because it can spread to other parts of the body (metastasis) if not treated promptly.</p>
+
+                    <!-- Accordion for Melanoma Causes -->
+                    <div class="accordion" id="melanomaAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingMelanoma">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMelanoma" aria-expanded="false" aria-controls="collapseMelanoma">
+                                    Causes
+                                </button>
+                            </h2>
+                            <div id="collapseMelanoma" class="accordion-collapse collapse show" aria-labelledby="headingMelanoma" data-bs-parent="#melanomaAccordion">
+                                <div class="accordion-body">
+                                    <ul>
+                                        <li>UV exposure from the sun or tanning beds can damage the DNA in skin cells, leading to changes that trigger melanoma.</li>
+                                        <li>Fair skin, light-colored hair, and blue or green eyes increase the risk due to less melanin protection against UV damage.</li>
+                                        <li>Abnormal moles or many moles (more than 50) on the body can heighten the risk of melanoma.</li>
+                                        <li>Family history of melanoma or genetic factors like mutations in the CDKN2A gene can predispose someone to melanoma.</li>
+                                        <li>Weakened immune system, for example, due to immunosuppressive medication or diseases like HIV/AIDS, makes individuals more susceptible to developing melanoma.</li>
+                                        <li>Irregular and intense UV exposure, such as severe sunburn during a holiday, increases the risk of melanoma compared to long-term constant sun exposure, which tends to affect other skin cancers like basal cell carcinoma.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Accordion for Melanoma Symptoms -->
+                    <div class="accordion" id="melanomaSymptomsAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingMelanomaSymptoms">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMelanomaSymptoms" aria-expanded="false" aria-controls="collapseMelanomaSymptoms">
+                                    Symptoms
+                                </button>
+                            </h2>
+                            <div id="collapseMelanomaSymptoms" class="accordion-collapse collapse show" aria-labelledby="headingMelanomaSymptoms" data-bs-parent="#melanomaSymptomsAccordion">
+                                <div class="accordion-body">
+                                    <ul>
+                                        <li><strong>Changes in Existing Moles:</strong> Alterations in size, shape, color, or texture of existing moles.</li>
+                                        <li><strong>Irregular Shapes:</strong> Moles or skin lesions with irregular, jagged, or blurred edges.</li>
+                                        <li><strong>Uneven Color:</strong> Variations in color within a single mole, including shades of brown, black, red, white, or blue.</li>
+                                        <li><strong>Growing Moles:</strong> Moles larger than 6 mm or those growing over time.</li>
+                                        <li><strong>Changes in Sensation:</strong> Moles that itch, hurt, or feel uncomfortable.</li>
+                                        <li><strong>New Moles:</strong> The appearance of new moles, especially after the age of 30.</li>
+                                        <li><strong>Bleeding or Oozing:</strong> Moles that bleed or excrete fluids.</li>
+                                        <li><strong>Surrounding Skin Changes:</strong> Redness, swelling, or pain around the mole.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Milia Overview Section -->
+                    <h2>Milia</h2>
+                    <p>Milia are small, white or yellowish bumps that form on the skin's surface, often appearing on the face around the eyes, cheeks, nose, and forehead. They occur when dead skin cells become trapped beneath the surface, forming small cysts that resemble pimples or blackheads.</p>
+
+                    <p>While generally harmless, milia are common in newborns but can also occur in adults. The exact causes in adults are not fully understood, but several factors can contribute to their development:</p>
+
+                    <!-- Accordion for Milia Causes -->
+                    <div class="accordion" id="miliaCausesAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingMiliaCauses">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMiliaCauses" aria-expanded="false" aria-controls="collapseMiliaCauses">
+                                    Causes of Milia
+                                </button>
+                            </h2>
+                            <div id="collapseMiliaCauses" class="accordion-collapse collapse show" aria-labelledby="headingMiliaCauses" data-bs-parent="#miliaCausesAccordion">
+                                <div class="accordion-body">
+                                    <ul>
+                                        <li><strong>Dead Skin Cell Buildup:</strong> Milia often form when dead skin cells fail to shed properly and become trapped beneath the skin, creating small cysts.</li>
+                                        <li><strong>Use of Heavy Skincare Products:</strong> Products containing heavy or oily ingredients can clog pores, potentially leading to milia formation.</li>
+                                        <li><strong>Skin Injury or Procedures:</strong> Milia can develop after skin injuries, burns, or procedures like chemical peels or laser treatments, due to inflammation disrupting natural skin shedding.</li>
+                                        <li><strong>Dry or Thickened Skin:</strong> Dry or thick skin may not exfoliate well, allowing dead skin cells to build up and form milia.</li>
+                                        <li><strong>Use of Corticosteroid Products:</strong> Long-term use of topical or systemic corticosteroids can affect the skin's exfoliation process, contributing to milia formation.</li>
+                                        <li><strong>Genetic Factors:</strong> In some cases, milia can occur due to genetic predisposition, though this is less common.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Accordion for Milia Symptoms -->
+                    <div class="accordion" id="miliaSymptomsAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingMiliaSymptoms">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMiliaSymptoms" aria-expanded="false" aria-controls="collapseMiliaSymptoms">
+                                    Symptoms
+                                </button>
+                            </h2>
+                            <div id="collapseMiliaSymptoms" class="accordion-collapse collapse show" aria-labelledby="headingMiliaSymptoms" data-bs-parent="#miliaSymptomsAccordion">
+                                <div class="accordion-body">
+                                    <ul>
+                                        <li><strong>Firm, Immobile Bumps:</strong> Milia appear as small, hard bumps that do not move when touched, typically 1–2 millimeters in size.</li>
+                                        <li><strong>White or Yellowish Color:</strong> Milia often have a white or yellowish hue due to keratin trapped beneath the skin, resembling small pimples.</li>
+                                        <li><strong>Common Locations:</strong> They usually appear on the face, particularly around the eyes, cheeks, forehead, and nose, but can also occur elsewhere on the body.</li>
+                                        <li><strong>Painless and Non-Inflammatory:</strong> Milia are generally painless, non-itchy, and do not cause redness or swelling.</li>
+                                        <li><strong>Grouped Bumps:</strong> Milia can sometimes appear in small clusters in the same area.</li>
+                                        <li><strong>Triggered by Skin Damage:</strong> Milia may develop after skin trauma, such as minor burns, irritation from skincare treatments, or using heavy or oily cosmetics.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ringworm Accordion Section -->
+                    <h2>Ringworm</h2>
+                    <p>Ringworm, also known as tinea, is a fungal skin infection. Despite its name containing "worm," the disease does not involve any worms. Ringworm is characterized by the appearance of a circular rash or ring-like patches on the skin, often red and itchy at the edges, with a lighter or clearer central area.</p>
+
+                    <!-- Accordion for Ringworm Types -->
+                    <div class="accordion" id="ringwormAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingRingworm">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseRingworm" aria-expanded="false" aria-controls="collapseRingworm">
+                                    Types of Ringworm
+                                </button>
+                            </h2>
+                            <div id="collapseRingworm" class="accordion-collapse collapse show" aria-labelledby="headingRingworm" data-bs-parent="#ringwormAccordion">
+                                <div class="accordion-body">
+                                    <ul>
+                                        <li><strong>Tinea corporis:</strong> Ringworm on the body</li>
+                                        <li><strong>Tinea capitis:</strong> Ringworm on the scalp</li>
+                                        <li><strong>Tinea pedis (athlete’s foot):</strong> Ringworm on the feet</li>
+                                        <li><strong>Tinea cruris (jock itch):</strong> Ringworm in the groin area</li>
+                                        <li><strong>Tinea unguium (onychomycosis):</strong> Ringworm on the nails</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Accordion for Ringworm Causes -->
+                    <div class="accordion" id="ringwormCausesAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingCauses">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCauses" aria-expanded="false" aria-controls="collapseCauses">
+                                    Causes
+                                </button>
+                            </h2>
+                            <div id="collapseCauses" class="accordion-collapse collapse show" aria-labelledby="headingCauses" data-bs-parent="#ringwormCausesAccordion">
+                                <div class="accordion-body">
+                                    <ul>
+                                        <li>Dermatophytes: The fungus that causes ringworm, dermatophytes, lives in keratin-rich tissues like skin, hair, and nails. It thrives in warm and moist environments.</li>
+                                        <li>Transmission: Ringworm can spread through direct contact with an infected person, indirect contact through contaminated objects like towels, clothes, combs, or shoes, contact with infected animals (cats, dogs), and exposure to damp environments such as locker rooms, pools, or saunas.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Accordion for Ringworm Symptoms -->
+                    <div class="accordion" id="ringwormSymptomsAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingSymptoms">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSymptoms" aria-expanded="false" aria-controls="collapseSymptoms">
+                                    Symptoms
+                                </button>
+                            </h2>
+                            <div id="collapseSymptoms" class="accordion-collapse collapse show" aria-labelledby="headingSymptoms" data-bs-parent="#ringwormSymptomsAccordion">
+                                <div class="accordion-body">
+                                    <ul>
+                                        <li>Circular or ring-shaped rash with raised, red, itchy edges, often with a lighter center.</li>
+                                        <li>Intense itching around the edge of the rash, which can be very uncomfortable.</li>
+                                        <li>Skin in the infected area may appear dry, flaky, or cracked, especially with athlete’s foot or tinea corporis.</li>
+                                        <li>Inflammation or redness around the edges of the rash.</li>
+                                        <li>Specific areas affected: 
+                                            <ul>
+                                                <li>Scalp (tinea capitis), with symptoms like hair loss in affected areas, scaling skin, or small pustules.</li>
+                                                <li>Body (tinea corporis), with ring-shaped rash on limbs, trunk, or torso.</li>
+                                                <li>Feet (tinea pedis), characterized by cracked, flaky skin between the toes or soles of the feet.</li>
+                                                <li>Groin area (tinea cruris), with red, itchy rash around the inner thighs, often painful.</li>
+                                                <li>Nails (tinea unguium), which may become thick, brittle, or discolored yellow or brown.</li>
+                                            </ul>
+                                        </li>
+                                        <li>If untreated, the infection can spread to other parts of the body or to other people through direct contact or contaminated objects.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Rosacea Accordion Section -->
+                    <h2>Rosacea</h2>
+                    <p>Rosacea is a chronic skin condition that causes redness and swelling on the face, particularly on the cheeks, nose, chin, and forehead. This condition is often accompanied by other symptoms such as visible blood vessels, acne-like breakouts, and a burning sensation on the skin. Rosacea is more common in adults aged 30 to 50 years, especially those with fair skin.</p>
+
+                    <!-- Accordion for Rosacea Causes -->
+                    <div class="accordion" id="rosaceaAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingRosaceaCauses">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseRosaceaCauses" aria-expanded="false" aria-controls="collapseRosaceaCauses">
+                                    Causes
+                                </button>
+                            </h2>
+                            <div id="collapseRosaceaCauses" class="accordion-collapse collapse show" aria-labelledby="headingRosaceaCauses" data-bs-parent="#rosaceaAccordion">
+                                <div class="accordion-body">
+                                    <ul>
+                                        <li><strong>Genetics:</strong> Family history of rosacea can increase the risk.</li>
+                                        <li><strong>Excessive Immune Response:</strong> Skin may react excessively to certain irritants or microorganisms.</li>
+                                        <li><strong>Specific Microorganisms:</strong> Presence of Demodex mites or Helicobacter pylori bacteria in the digestive system may contribute.</li>
+                                        <li><strong>Abnormal Blood Vessels:</strong> Enlarged blood vessels beneath the skin can cause the characteristic redness.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Accordion for Rosacea Triggers -->
+                    <div class="accordion" id="rosaceaTriggersAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingRosaceaTriggers">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseRosaceaTriggers" aria-expanded="false" aria-controls="collapseRosaceaTriggers">
+                                    Triggers
+                                </button>
+                            </h2>
+                            <div id="collapseRosaceaTriggers" class="accordion-collapse collapse show" aria-labelledby="headingRosaceaTriggers" data-bs-parent="#rosaceaTriggersAccordion">
+                                <div class="accordion-body">
+                                    <ul>
+                                        <li>Spicy foods, alcohol, or hot beverages can worsen or trigger rosacea symptoms.</li>
+                                        <li>Sun exposure or extreme temperatures may aggravate the condition.</li>
+                                        <li>Emotional stress can also trigger flare-ups.</li>
+                                        <li>Heavy physical activity may exacerbate symptoms.</li>
+                                        <li>Use of irritating skincare products can worsen rosacea.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Accordion for Rosacea Symptoms -->
+                    <div class="accordion" id="rosaceaSymptomsAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingRosaceaSymptoms">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseRosaceaSymptoms" aria-expanded="false" aria-controls="collapseRosaceaSymptoms">
+                                    Symptoms
+                                </button>
+                            </h2>
+                            <div id="collapseRosaceaSymptoms" class="accordion-collapse collapse show" aria-labelledby="headingRosaceaSymptoms" data-bs-parent="#rosaceaSymptomsAccordion">
+                                <div class="accordion-body">
+                                    <ul>
+                                        <li><strong>Persistent Redness (Flushing):</strong> Typically appears in the center of the face.</li>
+                                        <li><strong>Visible Blood Vessels:</strong> Small capillaries under the skin that appear as thin red or blue lines.</li>
+                                        <li><strong>Bumps or Acne-Like Breakouts:</strong> Sometimes accompanied by small red bumps that can contain pus.</li>
+                                        <li><strong>Thickened Skin:</strong> In advanced cases, especially around the nose, the skin may become thickened and swollen (rhinophyma).</li>
+                                        <li><strong>Eye Irritation:</strong> Some individuals with rosacea experience redness, dryness, or a burning sensation in the eyes (ocular rosacea).</li>
+                                        <li><strong>Dry or Flaky Skin:</strong> Skin in affected areas can become dry, rough, or scaly, sometimes itchy or peeling.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Vitiligo Accordion Section -->
+                    <h2>Vitiligo</h2>
+                    <p>Vitiligo is a skin disease characterized by the gradual loss of skin color in specific areas. This occurs when the cells that produce melanin, the pigment responsible for skin, hair, and eye color, are damaged or die. As a result, patches of skin become lighter or white in the affected areas.</p>
+
+                    <!-- Accordion for Vitiligo Causes -->
+                    <div class="accordion" id="vitiligoAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingVitiligoCauses">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseVitiligoCauses" aria-expanded="false" aria-controls="collapseVitiligoCauses">
+                                    Causes
+                                </button>
+                            </h2>
+                            <div id="collapseVitiligoCauses" class="accordion-collapse collapse show" aria-labelledby="headingVitiligoCauses" data-bs-parent="#vitiligoAccordion">
+                                <div class="accordion-body">
+                                    <ul>
+                                        <li><strong>Autoimmune Disorder:</strong> Vitiligo is often considered an autoimmune condition where the immune system mistakenly attacks the skin cells that produce melanin.</li>
+                                        <li><strong>Genetics:</strong> Family history of vitiligo can increase the risk of developing the condition.</li>
+                                        <li><strong>Stress:</strong> Emotional or physical stress can trigger or worsen vitiligo in some cases.</li>
+                                        <li><strong>Chemical Exposure:</strong> Exposure to certain chemicals or toxins may contribute to the onset of vitiligo.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Accordion for Vitiligo Symptoms -->
+                    <div class="accordion" id="vitiligoSymptomsAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingVitiligoSymptoms">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseVitiligoSymptoms" aria-expanded="false" aria-controls="collapseVitiligoSymptoms">
+                                    Symptoms
+                                </button>
+                            </h2>
+                            <div id="collapseVitiligoSymptoms" class="accordion-collapse collapse show" aria-labelledby="headingVitiligoSymptoms" data-bs-parent="#vitiligoSymptomsAccordion">
+                                <div class="accordion-body">
+                                    <ul>
+                                        <li><strong>White Patches on Skin:</strong> The most distinctive sign of vitiligo is the appearance of white or hypopigmented patches on the skin. These patches are caused by the loss of melanin pigment. They can occur on areas exposed to sunlight, such as hands, face, and arms, or on less exposed areas.</li>
+                                        <li><strong>Color Change in Hair:</strong> In some cases, the hair growing in the vitiligo-affected area can turn white or gray as the melanocytes in the hair follicles are affected.</li>
+                                        <li><strong>Patches on Mucosa (Mucous Membranes):</strong> Vitiligo can also affect mucous membranes, such as inside the mouth or nose, leading to white patches in these areas.</li>
+                                        <li><strong>Changes in Skin After Trauma:</strong> Vitiligo often appears in areas of the skin that have experienced trauma or injury, such as cuts, scratches, or scars (Koebner reaction). This can cause white patches to develop after skin injury.</li>
+                                        <li><strong>Spreading Patches:</strong> The white patches generally start small and can expand over time. In some individuals, these patches may spread to other parts of the body.</li>
+                                        <li><strong>Loss of Pigmentation in Sensitive Areas:</strong> Some people may also notice changes in pigmentation in more sensitive areas of the body, such as around the eyes, mouth, or genitals.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </div>
+</article>
+
+
+    <!-- Treatment -->
+    <section class="container">
+        <section id="treatment">
+            <div class="content">
+                <br>
+                <div class="jumbotrontreatment">
+                    <video class="video-jumbotron" autoplay muted loop>
+                        <source src="images/video2.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="container d-flex flex-column justify-content-end align-items-center h-100">
+                        <h1 class="display-4">Treatment Guidance</h1>
+                        <hr class="my-3">
+                    </div>
+                </div>
+                <div class="kolominformasi">
+                    <!-- Acne Treatment Accordion -->
+                    <h2>Acne Treatment</h2>
+                    <p>Acne treatment depends on the severity: mild, moderate, or severe. The main goals are to reduce oil production, kill bacteria, speed up skin regeneration, and reduce inflammation.</p>
+
+                    <!-- Accordion for Acne Mild Treatment -->
+                    <div class="accordion" id="acneMildTreatmentAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingAcneMildTreatment">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAcneMildTreatment" aria-expanded="false" aria-controls="collapseAcneMildTreatment">
+                                    Mild Acne Treatment (Whiteheads and Blackheads)
+                                </button>
+                            </h2>
+                            <div id="collapseAcneMildTreatment" class="accordion-collapse collapse show" aria-labelledby="headingAcneMildTreatment" data-bs-parent="#acneMildTreatmentAccordion">
+                                <div class="accordion-body">
+                                    <ul>
+                                        <li><strong>Cleansing:</strong> Use specific face cleansers with active ingredients like:
+                                            <ul>
+                                                <li>Salicylic Acid: Helps to clear pores from oil and dead skin cells.</li>
+                                                <li>Benzoil Peroxide: Kills acne-causing bacteria and reduces excess oil production.</li>
+                                            </ul>
+                                        </li>
+                                        <li><strong>Topical Medications:</strong>
+                                            <ul>
+                                                <li>Retinoids (like Adapalene) to speed up skin cell turnover.</li>
+                                                <li>Niacinamide to reduce inflammation.</li>
+                                            </ul>
+                                        </li>
+                                        <li>Avoid oily products that can clog pores.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Basal Cell Carcinoma Treatment Accordion -->
+                    <h2>Basal Cell Carcinoma (BCC) Treatment</h2>
+                    <p>Basal Cell Carcinoma (BCC) treatment aims to remove cancerous tissue completely and prevent recurrence. The treatment methods depend on the size, location, and severity of the cancer. Here are some common treatment options:</p>
+
+                    <!-- Accordion for BCC Surgery Options -->
+                    <div class="accordion" id="bccSurgeryOptionsAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingBCCSurgeryOptions">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBCCSurgeryOptions" aria-expanded="false" aria-controls="collapseBCCSurgeryOptions">
+                                    Surgery Options
+                                </button>
+                            </h2>
+                            <div id="collapseBCCSurgeryOptions" class="accordion-collapse collapse show" aria-labelledby="headingBCCSurgeryOptions" data-bs-parent="#bccSurgeryOptionsAccordion">
+                                <div class="accordion-body">
+                                    <ul>
+                                        <li><strong>Excision Surgery:</strong> The doctor removes the tumor along with a small margin of healthy tissue around it to ensure no cancer cells are left. Suitable for most BCC cases, especially if the tumor is small.</li>
+                                        <li><strong>Mohs Surgery:</strong> A stepwise surgical procedure where layers of skin are removed one by one and examined under a microscope until no more cancer cells are detected. Highly effective for BCC located in sensitive areas like the face, ears, or nose. It preserves as much healthy tissue as possible.</li>
+                                        <li><strong>Curettage and Electrodesiccation:</strong> The tumor is scraped with a curette and then the area is cauterized with an electric needle to kill any remaining cancer cells. Used for small, superficial BCCs.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Accordion for BCC Photodynamic Therapy -->
+                    <div class="accordion" id="bccPhotodynamicTherapyAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingBCCPhotodynamicTherapy">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBCCPhotodynamicTherapy" aria-expanded="false" aria-controls="collapseBCCPhotodynamicTherapy">
+                                    Photodynamic Therapy (PDT)
+                                </button>
+                            </h2>
+                            <div id="collapseBCCPhotodynamicTherapy" class="accordion-collapse collapse show" aria-labelledby="headingBCCPhotodynamicTherapy" data-bs-parent="#bccPhotodynamicTherapyAccordion">
+                                <div class="accordion-body">
+                                    <ul>
+                                        <li><strong>Photodynamic Therapy (PDT):</strong> Uses a topical drug that makes cancer cells more sensitive to light, followed by exposure to a specific light wavelength to destroy the cancerous cells. Effective for superficial or early-stage BCC.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Accordion for BCC Topical Treatment Options -->
+                    <div class="accordion" id="bccTopicalTreatmentOptionsAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingBCCTopicalTreatmentOptions">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBCCTopicalTreatmentOptions" aria-expanded="false" aria-controls="collapseBCCTopicalTreatmentOptions">
+                                    Topical Treatment Options
+                                </button>
+                            </h2>
+                            <div id="collapseBCCTopicalTreatmentOptions" class="accordion-collapse collapse show" aria-labelledby="headingBCCTopicalTreatmentOptions" data-bs-parent="#bccTopicalTreatmentOptionsAccordion">
+                                <div class="accordion-body">
+                                    <ul>
+                                        <li><strong>Imiquimod:</strong> Stimulates the immune system to fight the cancer cells directly.</li>
+                                        <li><strong>5-Fluorouracil (5-FU):</strong> Directly kills the cancer cells.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Accordion for BCC Radiation Treatment -->
+                    <div class="accordion" id="bccRadiationTreatmentAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingBCCRadiationTreatment">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBCCRadiationTreatment" aria-expanded="false" aria-controls="collapseBCCRadiationTreatment">
+                                    Radiation Treatment
+                                </button>
+                            </h2>
+                            <div id="collapseBCCRadiationTreatment" class="accordion-collapse collapse show" aria-labelledby="headingBCCRadiationTreatment" data-bs-parent="#bccRadiationTreatmentAccordion">
+                                <div class="accordion-body">
+                                    <ul>
+                                        <li><strong>Radiation Therapy:</strong> Uses X-rays or other forms of radiation to destroy cancer cells. Suitable for patients who cannot undergo surgery or for tumors in difficult-to-operate areas.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Accordion for BCC Systemic Treatment -->
+                    <div class="accordion" id="bccSystemicTreatmentAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingBCCSystemicTreatment">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBCCSystemicTreatment" aria-expanded="false" aria-controls="collapseBCCSystemicTreatment">
+                                    Systemic Treatment
+                                </button>
+                            </h2>
+                            <div id="collapseBCCSystemicTreatment" class="accordion-collapse collapse show" aria-labelledby="headingBCCSystemicTreatment" data-bs-parent="#bccSystemicTreatmentAccordion">
+                                <div class="accordion-body">
+                                    <ul>
+                                        <li><strong>Systemic Treatment:</strong> In cases where BCC spreads (very rare), doctors may prescribe oral or injectable drugs like Vismodegib or Sonidegib. These target specific molecular pathways involved in cancer development.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Accordion for BCC Cryotherapy -->
+                    <div class="accordion" id="bccCryotherapyAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingBCCCryotherapy">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBCCCryotherapy" aria-expanded="false" aria-controls="collapseBCCCryotherapy">
+                                    Cryotherapy
+                                </button>
+                            </h2>
+                            <div id="collapseBCCCryotherapy" class="accordion-collapse collapse show" aria-labelledby="headingBCCCryotherapy" data-bs-parent="#bccCryotherapyAccordion">
+                                <div class="accordion-body">
+                                    <ul>
+                                        <li><strong>Cryotherapy:</strong> Freezes the tumor using liquid nitrogen to destroy the cancer cells. Used for small superficial BCCs.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Eczema Accordion Section -->
+                    <h2>Eczema</h2>
+                    <p>Eczema is a skin condition characterized by inflammation, redness, itching, and sometimes blisters. It can range from mild to severe and often flares up periodically. Proper treatment and care can help reduce symptoms and prevent recurrences.</p>
+
+                    <!-- Accordion for Eczema Treatment -->
+                    <div class="accordion" id="eczemaAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingEczemaTreatment">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEczemaTreatment" aria-expanded="false" aria-controls="collapseEczemaTreatment">
+                                    Treatment
+                                </button>
+                            </h2>
+                            <div id="collapseEczemaTreatment" class="accordion-collapse collapse show" aria-labelledby="headingEczemaTreatment" data-bs-parent="#eczemaAccordion">
+                                <div class="accordion-body">
+                                    <ul>
+                                        <li><strong>Topical Corticosteroids:</strong> Creams or ointments like hydrocortisone to reduce inflammation and itching, especially for severe eczema.</li>
+                                        <li><strong>Emollients or Moisturizers:</strong> Essential for maintaining skin hydration, preventing dryness, and managing eczema. Use hypoallergenic and fragrance-free options at least twice daily.</li>
+                                        <li><strong>Topical Immunomodulators:</strong> Tacrolimus and pimecrolimus are alternatives to corticosteroids for reducing inflammation without long-term side effects.</li>
+                                        <li><strong>Antibiotics:</strong> Topical or oral antibiotics may be prescribed if there is a bacterial infection in the eczema-affected areas.</li>
+                                        <li><strong>Phototherapy:</strong> UV light therapy for chronic or severe eczema unresponsive to other treatments, reducing inflammation and easing symptoms.</li>
+                                        <li><strong>Antihistamines:</strong> Oral or topical antihistamines to relieve itching and reduce the temptation to scratch the skin.</li>
+                                        <li><strong>Systemic Medications:</strong> For severe cases, oral corticosteroids, cyclosporine, methotrexate, or biologics (e.g., dupilumab) may be used to suppress immune responses.</li>
+                                        <li><strong>Avoiding Triggers:</strong> Identifying and avoiding triggers such as irritants, allergens, or stress can prevent flare-ups.</li>
+                                        <li><strong>Additional Skin Care:</strong> Use gentle soaps and warm water for bathing, avoid harsh scrubbing, and immediately apply moisturizers post-bath.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Accordion for Eczema Prevention -->
+                    <div class="accordion" id="eczemaPreventionAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingEczemaPrevention">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEczemaPrevention" aria-expanded="false" aria-controls="collapseEczemaPrevention">
+                                    Prevention
+                                </button>
+                            </h2>
+                            <div id="collapseEczemaPrevention" class="accordion-collapse collapse show" aria-labelledby="headingEczemaPrevention" data-bs-parent="#eczemaPreventionAccordion">
+                                <div class="accordion-body">
+                                    <ul>
+                                        <li><strong>Keep Skin Moisturized:</strong> Use fragrance-free moisturizers regularly, especially after bathing, to lock in moisture and prevent dryness.</li>
+                                        <li><strong>Avoid Triggers:</strong> Identify and avoid irritants such as detergents, perfumes, and allergens, as well as extreme weather conditions.</li>
+                                        <li><strong>Choose Appropriate Clothing:</strong> Opt for soft, breathable fabrics like cotton and avoid tight or scratchy materials such as wool.</li>
+                                        <li><strong>Warm Water Baths:</strong> Bathe with warm (not hot) water and use mild, fragrance-free soap. Limit bathing time to prevent skin drying.</li>
+                                        <li><strong>Manage Stress:</strong> Practice stress-relief techniques like meditation, yoga, or deep breathing to prevent flare-ups triggered by stress.</li>
+                                        <li><strong>Prevent Scratching:</strong> Use antihistamines or anti-itch creams and wear soft gloves at night to avoid scratching during sleep.</li>
+                                        <li><strong>Avoid Tanning Beds:</strong> Protect skin from excessive sunlight or tanning bed use, as this can worsen eczema symptoms.</li>
+                                        <li><strong>Manage Food Allergies:</strong> Avoid foods that trigger allergic reactions if eczema is linked to food allergies.</li>
+                                        <li><strong>Follow Medical Advice:</strong> Adhere to prescribed treatments, including preventive creams, to manage and prevent eczema flare-ups effectively.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Melanoma Accordion Section -->
+                    <h2>Melanoma</h2>
+                    <p>Melanoma is a type of skin cancer that can be prevented with proper skin protection measures to reduce exposure to ultraviolet (UV) rays, which are the primary cause of this disease.</p>
+
+                    <!-- Accordion for Melanoma Prevention -->
+                    <div class="accordion" id="melanomaPreventionAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingMelanomaPrevention">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMelanomaPrevention" aria-expanded="false" aria-controls="collapseMelanomaPrevention">
+                                    Prevention
+                                </button>
+                            </h2>
+                            <div id="collapseMelanomaPrevention" class="accordion-collapse collapse show" aria-labelledby="headingMelanomaPrevention" data-bs-parent="#melanomaPreventionAccordion">
+                                <div class="accordion-body">
+                                    <ul>
+                                        <li><strong>Use Sunscreen:</strong> Apply sunscreen with a minimum SPF of 30 that protects against UVA and UVB rays 15–30 minutes before sun exposure. Reapply every two hours or more frequently when sweating or after swimming.</li>
+                                        <li><strong>Avoid Prolonged Sun Exposure:</strong> Stay out of direct sunlight, especially between 10 AM and 4 PM, when UV rays are strongest. Seek shade whenever possible.</li>
+                                        <li><strong>Wear Protective Clothing:</strong> Use long-sleeved shirts, long pants, and wide-brimmed hats to shield your skin. Choose tightly woven fabrics and UV-blocking sunglasses.</li>
+                                        <li><strong>Avoid Tanning Beds:</strong> Refrain from using tanning beds as they emit artificial UV rays harmful to the skin.</li>
+                                        <li><strong>Conduct Regular Skin Checks:</strong> Inspect your skin periodically for changes in moles or new growths. Consult a dermatologist for any unusual findings.</li>
+                                        <li><strong>Use Mole Monitoring Apps:</strong> Leverage smartphone apps to track changes in moles over time for early detection.</li>
+                                        <li><strong>Maintain Skin Health:</strong> Adopt a healthy lifestyle with a diet rich in antioxidants, vitamins C and E. Keep your skin hydrated and avoid smoking.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Accordion for Melanoma Treatment -->
+                    <div class="accordion" id="melanomaTreatmentAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingMelanomaTreatment">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMelanomaTreatment" aria-expanded="false" aria-controls="collapseMelanomaTreatment">
+                                    Treatment
+                                </button>
+                            </h2>
+                            <div id="collapseMelanomaTreatment" class="accordion-collapse collapse show" aria-labelledby="headingMelanomaTreatment" data-bs-parent="#melanomaTreatmentAccordion">
+                                <div class="accordion-body">
+                                    <ul>
+                                        <li><strong>Surgery:</strong> Removal of the melanoma through excision or lymph node dissection for advanced cases.</li>
+                                        <li><strong>Immunotherapy:</strong> Use of drugs like pembrolizumab and nivolumab to enhance the immune response against melanoma.</li>
+                                        <li><strong>Targeted Therapy:</strong> Treatment targeting specific mutations (e.g., BRAF inhibitors like vemurafenib and dabrafenib).</li>
+                                        <li><strong>Radiotherapy:</strong> High-energy radiation to treat melanoma that has spread to areas like the brain or bones.</li>
+                                        <li><strong>Chemotherapy:</strong> Use of drugs to slow the growth or destroy cancer cells in advanced melanoma.</li>
+                                        <li><strong>Experimental Treatments:</strong> Participation in clinical trials for new therapies.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Milia Accordion Section -->
+                    <h2>Milia</h2>
+                    <p>Milia are small cysts that form due to the buildup of keratin beneath the skin. While generally harmless and often disappearing on their own within a few weeks or months, there are treatments available to accelerate their removal or prevent recurrence. Below are the treatment methods for milia:</p>
+
+                    <!-- Accordion for Milia Treatment -->
+                    <div class="accordion" id="miliaTreatmentAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingMiliaTreatment">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMiliaTreatment" aria-expanded="false" aria-controls="collapseMiliaTreatment">
+                                    Treatment
+                                </button>
+                            </h2>
+                            <div id="collapseMiliaTreatment" class="accordion-collapse collapse show" aria-labelledby="headingMiliaTreatment" data-bs-parent="#miliaTreatmentAccordion">
+                                <div class="accordion-body">
+                                    <ul>
+                                        <li><strong>Chemical Exfoliation:</strong> This involves the use of gentle chemicals like salicylic acid or glycolic acid to remove dead skin cells and prevent clogged pores. It can be done using skincare products or by a dermatologist.</li>
+                                        <li><strong>Direct Extraction:</strong> A common and effective treatment where a dermatologist carefully removes the keratin from under the skin using a sterile needle or other small tools.</li>
+                                        <li><strong>Topical Retinoids:</strong> Creams containing retinoids (e.g., tretinoin) can accelerate skin cell turnover, helping prevent keratin buildup and reducing existing milia.</li>
+                                        <li><strong>Alpha Hydroxy Acids (AHAs):</strong> Products with AHAs can help soften and remove dead skin cells that cause blockage. AHAs also improve skin moisture, which is essential in preventing milia formation.</li>
+                                        <li><strong>Laser Therapy:</strong> In some cases, light laser treatments like CO2 or argon lasers are used to remove persistent milia by targeting and eliminating cysts without harming surrounding skin.</li>
+                                        <li><strong>Topical Treatments:</strong> Products containing active ingredients such as salicylic acid or glycolic acid can address mild milia by loosening trapped skin cells and reopening pores.</li>
+                                        <li><strong>Corticosteroid Creams:</strong> If milia are accompanied by inflammation, mild corticosteroid creams may be prescribed to reduce inflammation and aid healing. These should be used under medical supervision.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Accordion for Milia Prevention Tips -->
+                    <div class="accordion" id="miliaPreventionAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingMiliaPrevention">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMiliaPrevention" aria-expanded="false" aria-controls="collapseMiliaPrevention">
+                                    Prevention Tips
+                                </button>
+                            </h2>
+                            <div id="collapseMiliaPrevention" class="accordion-collapse collapse show" aria-labelledby="headingMiliaPrevention" data-bs-parent="#miliaPreventionAccordion">
+                                <div class="accordion-body">
+                                    <ul>
+                                        <li><strong>Regular Skin Cleansing:</strong> Regularly cleansing your skin with a gentle cleanser helps prevent the buildup of dead skin cells that can clog pores and cause milia. Avoid harsh cleansers or those containing chemicals that can damage the skin.</li>
+                                        <li><strong>Choosing the Right Moisturizer:</strong> Select a moisturizer suitable for your skin type. If you have dry skin, use a moisturizer that hydrates without clogging pores. The right moisturizer can prevent dryness and thickening of the skin, which can contribute to milia formation.</li>
+                                        <li><strong>Gentle Exfoliation:</strong> Gently exfoliating the skin can help remove dead skin cells trapped beneath the surface. Choose non-abrasive exfoliating products, such as those containing salicylic acid or glycolic acid, and use them according to the instructions.</li>
+                                        <li><strong>Avoid Heavy or Oily Skincare Products:</strong> Heavy or oily skincare products, like thick creams, can clog pores and trigger milia formation. Opt for lightweight, non-comedogenic products that do not cause pore blockage.</li>
+                                        <li><strong>Hydration:</strong> Dry or dehydrated skin is more prone to dead skin cell buildup. Ensure your skin is well-hydrated with enough water and use the appropriate moisturizer to maintain skin moisture.</li>
+                                        <li><strong>Avoid Overuse of Strong Exfoliants or Whitening Products:</strong> Products that contain strong exfoliants or whitening agents can irritate the skin and cause inflammation, increasing the risk of milia, especially if used excessively.</li>
+                                        <li><strong>Protection from Sun Exposure:</strong> Excessive sun exposure can make the skin dry and thick, increasing the risk of dead skin cell buildup. Use sunscreen with SPF 30 or higher to protect the skin from UV damage.</li>
+                                        <li><strong>Consult a Doctor:</strong> If you are using topical medications or corticosteroids, consult a dermatologist about potential side effects that may affect the skin and increase the risk of milia.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ringworm Treatment and Prevention Section -->
+                    <h2>Treatment of Ringworm (Tinea)</h2>
+                    <p>Treatment for ringworm focuses on eliminating the fungal infection and preventing its spread or recurrence. Here are common treatment methods:</p>
+
+                    <!-- Accordion for Ringworm Treatment Tips -->
+                    <div class="accordion" id="ringwormTreatmentAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingRingwormTreatment">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseRingwormTreatment" aria-expanded="false" aria-controls="collapseRingwormTreatment">
+                                    Treatment Tips
+                                </button>
+                            </h2>
+                            <div id="collapseRingwormTreatment" class="accordion-collapse collapse show" aria-labelledby="headingRingwormTreatment" data-bs-parent="#ringwormTreatmentAccordion">
+                                <div class="accordion-body">
+                                    <ul>
+                                        <li><strong>Topical Antifungal Medications:</strong> The main treatment for ringworm involves applying topical antifungal medications directly to the affected area. Common active ingredients include clotrimazole, terbinafine, miconazole, and ketoconazole. These creams are usually applied twice daily for 2-4 weeks, even after the rash has healed, to ensure the infection is fully eradicated.</li>
+                                        <li><strong>Oral Antifungal Medications:</strong> If the fungal infection spreads, affects the scalp (tinea capitis), or does not respond to topical treatment, a doctor may prescribe oral antifungal medications such as griseofulvin, terbinafine, or itraconazole. These medications are taken for several weeks until the infection clears.</li>
+                                        <li><strong>Scalp Treatment:</strong> For tinea capitis, doctors may recommend antifungal shampoos containing selenium sulfide or ketoconazole to reduce the spread of fungal spores.</li>
+                                        <li><strong>Keep the Affected Area Clean and Dry:</strong> Since fungi thrive in moist environments, keeping the infected area clean and dry is crucial. Wash the affected area with a mild soap and water, then gently pat dry with a clean towel. Do not use the same towel for other parts of the body.</li>
+                                        <li><strong>Avoid Scratching:</strong> Scratching the infected area can worsen the condition or cause the infection to spread to other areas. Use antihistamines if itching is severe.</li>
+                                        <li><strong>Avoid Sharing Personal Items:</strong> Do not share personal items such as clothing, towels, or shoes with others. Wash clothing, bed linens, and towels used during the infection with hot water and detergent.</li>
+                                        <li><strong>Consult a Doctor:</strong> If symptoms do not improve after two weeks of self-treatment or if the infection is on nails or the scalp, consult a dermatologist for a proper diagnosis and further treatment.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2>Prevention of Ringworm</h2>
+                    <p>Prevention methods are aimed at reducing the risk of getting ringworm and preventing its spread. Here are tips to avoid ringworm:</p>
+
+                    <!-- Accordion for Ringworm Prevention Tips -->
+                    <div class="accordion" id="ringwormPreventionAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingRingwormPrevention">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseRingwormPrevention" aria-expanded="false" aria-controls="collapseRingwormPrevention">
+                                    Prevention Tips
+                                </button>
+                            </h2>
+                            <div id="collapseRingwormPrevention" class="accordion-collapse collapse show" aria-labelledby="headingRingwormPrevention" data-bs-parent="#ringwormPreventionAccordion">
+                                <div class="accordion-body">
+                                    <ul>
+                                        <li><strong>Personal Hygiene:</strong> Regular showers, especially after sweating a lot or after contact with soil, animals, or infected individuals, help maintain cleanliness. Dry your body thoroughly, particularly in skin folds like underarms, groin, and between toes, as fungi thrive in moist areas.</li>
+                                        <li><strong>Avoid Direct Contact:</strong> Minimize direct contact with individuals, animals, or objects that may be infected with ringworm. Check pets regularly for signs of ringworm, such as bald spots or patchy fur, and take them to the vet if needed.</li>
+                                        <li><strong>Regular Washing of Personal Items:</strong> Wash personal items such as clothes, bed sheets, towels, and other items used during the infection with hot water and detergent to prevent fungal spread.</li>
+                                        <li><strong>No Sharing of Personal Items:</strong> Do not share personal items like towels, clothing, combs, hats, shoes, or sports equipment, as these can be sources of transmission.</li>
+                                        <li><strong>Wear Protective Footwear:</strong> Wear sandals or protective shoes in public places that are damp, such as swimming pools, gyms, changing rooms, or public showers, to avoid direct contact with fungi on surfaces.</li>
+                                        <li><strong>Wear Breathable Clothing:</strong> Wear clothing made from breathable materials like cotton to prevent sweat buildup and reduce the risk of skin infections.</li>
+                                        <li><strong>Maintain Nail Hygiene:</strong> Keep nails trimmed and clean, and avoid nail biting. Use moisturizer to keep the skin healthy, but avoid products that are too heavy or oily, which can trap moisture.</li>
+                                        <li><strong>Antifungal Powders or Creams:</strong> Use antifungal powders or creams in susceptible areas like feet or groin, particularly if you are frequently in damp or high-risk environments.</li>
+                                        <li><strong>Avoid Contact with Wild Animals:</strong> Do not touch or handle wild animals that might be infected with ringworm, such as stray cats or dogs.</li>
+                                        <li><strong>Maintain a Clean Living Environment:</strong> Regularly clean moist areas like bathrooms or kitchens to prevent fungal growth. Keep surfaces and floors dry to minimize fungal spread.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Vitiligo Prevention Tips Section -->
+                    <h2>Treatment & Prevention of Vitiligo</h2>
+                    <p>Vitiligo is primarily influenced by genetic and autoimmune factors, and there is no definite way to prevent its development. However, there are steps that can be taken to reduce the risk of developing vitiligo or prevent the condition from worsening:</p>
+
+                    <!-- Accordion for Vitiligo Treatment -->
+                    <div class="accordion" id="vitiligoTreatmentAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingVitiligoTreatment">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseVitiligoTreatment" aria-expanded="false" aria-controls="collapseVitiligoTreatment">
+                                    Treatment
+                                </button>
+                            </h2>
+                            <div id="collapseVitiligoTreatment" class="accordion-collapse collapse show" aria-labelledby="headingVitiligoTreatment" data-bs-parent="#vitiligoTreatmentAccordion">
+                                <div class="accordion-body">
+                                    <ul>
+                                        <li><strong>Topical Steroids:</strong> Used to reduce inflammation and prevent further loss of pigment in the affected areas.</li>
+                                        <li><strong>Topical Calcineurin Inhibitors:</strong> Help to reduce the immune response that contributes to vitiligo.</li>
+                                        <li><strong>Phototherapy (UV Light Treatment):</strong> Involves using UV light to stimulate the remaining melanocytes and repigment the skin.</li>
+                                        <li><strong>Micropigmentation (Tattooing):</strong> Involves using tattoo ink to replicate the natural skin color in affected areas.</li>
+                                        <li><strong>Depigmentation:</strong> For extensive vitiligo, depigmentation of the unaffected skin may be used to match the lighter areas of the skin.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Accordion for Vitiligo Prevention Tips -->
+                    <div class="accordion" id="vitiligoPreventionAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingVitiligoPrevention">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseVitiligoPrevention" aria-expanded="false" aria-controls="collapseVitiligoPrevention">
+                                    Prevention Tips
+                                </button>
+                            </h2>
+                            <div id="collapseVitiligoPrevention" class="accordion-collapse collapse show" aria-labelledby="headingVitiligoPrevention" data-bs-parent="#vitiligoPreventionAccordion">
+                                <div class="accordion-body">
+                                    <ul>
+                                        <li><strong>Protect Skin from Sun Exposure:</strong> Excessive sun exposure can worsen vitiligo and accelerate skin damage. Use sunscreen with a high SPF whenever outdoors, even on cloudy days. Wearing protective clothing like hats and sun-protective clothing can also help shield the skin.</li>
+                                        <li><strong>Avoid Skin Trauma:</strong> Physical injury to the skin, such as cuts or scratches, can trigger a "Koebner" response (the spread of vitiligo to the injured area). Maintaining healthy skin and avoiding trauma can help prevent the condition from worsening.</li>
+                                        <li><strong>Reduce Stress:</strong> Emotional stress is considered a trigger for vitiligo, although the exact relationship between stress and vitiligo development is not fully understood. Managing stress through relaxation techniques like meditation, yoga, or exercise can help maintain mental and physical balance.</li>
+                                        <li><strong>Maintain a Healthy Immune System:</strong> Since vitiligo is associated with autoimmune disorders, keeping the immune system healthy through a balanced diet, regular exercise, and adequate sleep can help prevent the autoimmune disturbances contributing to vitiligo.</li>
+                                        <li><strong>Monitor Diet:</strong> Certain nutritional deficiencies, such as vitamin B12, folate, and copper, have been linked to the development of vitiligo. Consuming a diet rich in nutrients, including fruits, vegetables, whole grains, and foods containing essential vitamins and minerals, can support overall skin health.</li>
+                                        <li><strong>Avoid Irritating Skincare Products:</strong> Using harsh skincare products or those containing irritating chemicals can exacerbate vitiligo. Choosing gentle, alcohol-free skincare products can help maintain healthy skin and reduce the risk of inflammation or reactions that worsen vitiligo.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </section>
+
+
+    <!--Footer-->
+    <footer class="p-3 bg-dark text-white text-center position-relative">
+            <div class="container">
+                <p class="lead">© 2024 SkinSense AI | All Rights Reserved</p>
+                <a href="#" class="position-absolute bottom-0 end-0 p-3 text-primary">
+                    <i class="bi bi-arrow-up-circle h1"></i>
+                </a>
+            </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
