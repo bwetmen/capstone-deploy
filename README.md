@@ -97,9 +97,10 @@ pip install -r requirements.txt
 - **Response**:
   ```json
   {
-    "filename": "image.jpg",
-    "message": "Image successfully analyzed!",
-    "analysis": "Your skin is healthy!"
+   {
+  "predicted_label": "Eczema",
+  "confidence": 0.8531
+}
   }
   ```
 
